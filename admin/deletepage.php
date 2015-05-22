@@ -1,8 +1,8 @@
 <?php
 	extract($_REQUEST); 
 include "includes/functions.php";
-if(isset($_POST["submit"]))
+if(isset($id))
 {
-savePost($title, $content, $menu);
+deletePage($id);
 }
 ?>

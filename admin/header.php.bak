@@ -16,7 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
-	 <link href="css/style.css" rel="stylesheet">
+	 <link href="css/styles.css" rel="stylesheet">
 
 
     <!-- Custom Fonts -->
@@ -28,6 +28,12 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+	<script>
+	function goBack() {
+		window.history.back();
+	}
+	</script>
 
 </head>
 
@@ -107,7 +113,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-user"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">All Users</a>
+                                <a href="allusers.php">All Users</a>
                             </li>
                             <li>
                                 <a href="#">Add New</a>

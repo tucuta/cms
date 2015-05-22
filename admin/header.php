@@ -29,6 +29,12 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+	<script>
+	function goBack() {
+		window.history.back();
+	}
+	</script>
+
 </head>
 
 <body>
@@ -107,13 +113,13 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-user"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">All Users</a>
+                                <a href="allusers.php">All Users</a>
                             </li>
                             <li>
-                                <a href="#">Add New</a>
+                                <a href="adduser.php">Add New</a>
                             </li>
 							<li>
-                                <a href="#">Your Profile</a>
+                                <a href="profile.php">Your Profile</a>
                             </li>
                         </ul>
                     </li>

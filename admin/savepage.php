@@ -3,6 +3,6 @@
 include "includes/functions.php";
 if(isset($_POST["submit"]))
 {
-savePost($title, $content, $menu);
+savePage($title, $content, $menu);
 }
 ?>

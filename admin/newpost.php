@@ -22,30 +22,27 @@ include "header.php";
                     </div>
                 </div>
                 <!-- /.row -->
-
-
-                 <style>
-				 .error {
-                   color: red;
-				    font-size: 16px;;
-                    }
-					.suc {
-                   color: green;
-				  font-size: 16px;;
-                    }
-					</style>
-					
 			  <?php
 			  	extract($_REQUEST); 
-				if(isset( $save))
+				if(isset($save))
 				{
-					echo "<div class='breadcrumb'><p class='suc'>Page is Added Successfully</p></div>";
+					if(strcmp($save,"success")==0)
+					{
+					?>
+					<div class="alert alert-success">
+                    <strong>Page</strong> is Added successfully .
+                </div>
+				<?php
 				}
-				if(isset( $savefail))
+				else
 				{
-					echo "<div class='breadcrumb'><p class='error'>Page is doesn't added try again !</p></div>";
+					?>
+					<div class="alert alert-danger">
+                    <strong>Page</strong> is doesn't added try again ! .
+                </div>
+			   <?php
 				}
-				
+				}
 				?>
 				
 
@@ -85,15 +82,20 @@ include "header.php";
                             </div>
                                                              
                            <div class="form-group">
-                                <label>Select Menu</label>
-                                <select class="form-control" name="menu">
+						   <table>
+						   <tr>
+							<td> <label>Select Menu</label></td>
+							<td>&nbsp;</td>
+							<td><select class="form-control" name="menu">
 								    <option value="">-- Select --</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                     <option value="5">5</option>
-                                </select>
+                                </select></td>
+						   </tr>
+						   </table>     
                             </div>
 
                             <button type="submit" name="submit" class="btn btn-default">Post Content</button>

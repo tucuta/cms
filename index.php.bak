@@ -76,7 +76,7 @@ include "admin/dbconnect.php";
 	
 	//print the pages content
 	echo "<h1>$r->page_title</h2>";
-	echo $r->page_content;
+	echo $r->pageCont;
 	?>
       </div>
     </div>
