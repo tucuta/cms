@@ -57,13 +57,17 @@
             <ul class="nav navbar-right top-nav">
                <?php
 				session_start();
+				include "includes/config.php";
 				if(!isset($_SESSION["user_name"]))
 				{
 					header("location: index.php"); 
 				}
 				?>
-               
+               <li class="dropdown">
+                    <a href="<?=DIR?>" target="_blank"><i class="fa fa-globe"></i> View Site</a>    
+                </li>
                 <li class="dropdown">
+
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?=$_SESSION["user_name"]; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                        
@@ -87,10 +91,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#menu"><i class=" fa fa-fw fa-list" ></i>Menu <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="menu" class="collapse">
                             <li>
-                                <a href="#">All Menus</a>
+                                <a href="allmenus.php">All Menus</a>
                             </li>
                             <li>
-                                <a href="#">Add Menu</a>
+                                <a href="new_menu.php">Add Menu</a>
                             </li>
 							<li>
                                 <a href="#">Add Sub Menu</a>

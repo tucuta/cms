@@ -30,7 +30,7 @@ include "header.php";
 					{
 					?>
 					<div class="alert alert-success">
-                    <strong>Page</strong> is Added successfully 
+                    <strong>Page</strong> is Added successfully .
                 </div>
 				<?php
 				}
@@ -38,7 +38,7 @@ include "header.php";
 				{
 					?>
 					<div class="alert alert-danger">
-                    <strong>Page</strong> is doesn't added try again ! 
+                    <strong>Page</strong> is doesn't added try again ! .
                 </div>
 			   <?php
 				}
@@ -88,12 +88,22 @@ include "header.php";
 							<td>&nbsp;</td>
 							<td><select class="form-control" name="menu">
 								    <option value="">-- Select --</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select></td>
+
+                                    <?php
+			 include("dbconnect.php");
+			 $sql = mysql_query("select * from menu where active=1")or die(mysql_error());
+             $count = mysql_num_rows($sql);
+             if($count>0)
+             {
+             while($row = mysql_fetch_array($sql))
+	         {
+	
+		      ?>
+						
+								<option value="<?=$row[1];?>"><?=$row[1];?></option>
+							
+							<?php }
+				}?></select></td>
 						   </tr>
 						   </table>     
                             </div>

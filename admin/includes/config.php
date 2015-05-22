@@ -1,6 +1,6 @@
 <?php
 ob_start();
-session_start();
+
 
 // define site path
 define('DIR','http://localhost/itscms/');

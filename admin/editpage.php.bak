@@ -85,14 +85,35 @@ include "header.php";
 							<td> <label>Select Menu</label></td>
 							<td>&nbsp;</td>
 							<td><select class="form-control" name="menu">
-							<option value="1"><?=$row[3];?></option>
+							<option value="1" selected><?=$row[3];?></option>
 								    <option value="">-- Select --</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select></td>
+                                    
+                                    <?php
+
+		$menuId =$row[3];
+			 $sql1 = mysql_query("select * from menu where active=1")or die(mysql_error());
+             $count1 = mysql_num_rows($sql1);
+             if($count1>0)
+             {
+             while($row1 = mysql_fetch_array($sql1))
+	         {
+				 if($menuId == $row1[0])
+				 {
+	
+		      ?>
+						
+								<option value="<?=$row1[0];?>" selected ><?=$row1[1];?></option>
+							
+							<?php }
+							else
+				 {
+								?>
+
+								<option value="<?=$row1[0];?>"><?=$row1[1];?></option>
+				 <?php
+				 }
+			 }
+				}?></select></td>
 						   </tr>
 						   </table>     
                             </div>

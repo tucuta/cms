@@ -27,7 +27,7 @@ include "dbconnect.php";
                 <!-- /.row -->
 				<div class="row">
                     <div class="col-lg-6" align="left">
-					<table  class="table table-bordered table-hover">
+					<table border="0" align="center" cellpadding="10px" class="table table-bordered table-hover">
 			<tr><th>Username</th><th>E-mail</th><th> Role</th><th>Operations</th></tr>
 					<?php 
 $sql = mysql_query("select * from users")or die(mysql_error());

@@ -7,7 +7,7 @@ include "admin/dbconnect.php";
 <html>
 
 <head>
-  <title>CSS3_four</title>
+  <title>Innovate CMS</title>
   <meta name="description" content="website description" />
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -22,8 +22,8 @@ include "admin/dbconnect.php";
       <div id="logo">
         <div id="logo_text">
           <!-- class="logo_colour", allows you to change the colour of the text -->
-          <h1><a href="index.html">CCS3<span class="logo_colour">_four</span></a></h1>
-          <h2>Simple. Contemporary. Website Template.</h2>
+          <h1><a href="index.php">INNOVATE<span class="logo_colour">CMS</span></a></h1>
+          <h2>Simple Content Management System</h2>
         </div>
       </div>
       <nav>
@@ -31,10 +31,13 @@ include "admin/dbconnect.php";
           <ul class="sf-menu" id="nav">
 		  <?php
 		//get the rest of the pages
-		$sql = mysql_query("SELECT * FROM pages");
+		$sql = mysql_query("SELECT `pages`.`menu_id` , `menu`.`menu_name` , `pages`.`id` FROM `pages` INNER JOIN `menu` ON (`pages`.`menu_id` = `menu`.`id`)");
 		while ($row = mysql_fetch_object($sql))
 		{
-			echo "<li><a href=".DIR."?p=$row->id\">$row->menu_id</a></li>"; 
+			?>
+
+			<li><a href="<?=DIR?>?p=<?=$row->id?>"><?=$row->menu_name?></a></li> 
+			<?php
 		}
 	?>
             
@@ -76,16 +79,34 @@ include "admin/dbconnect.php";
 	
 	//print the pages content
 	echo "<h1>$r->page_title</h2>";
-	echo $r->pageCont;
+	echo $r->page_content;
 	?>
       </div>
     </div>
     <div id="scroll">
-      <a title="Scroll to the top" class="top" href="#"><img src="images/top.png" alt="top" /></a>
+      <a title="Scroll to the top" class="top" href="#"><img src="theme/images/top.png" alt="top" /></a>
     </div>
     <footer>
-      <p><a href="index.html">Home</a> | <a href="examples.html">Examples</a> | <a href="page.html">A Page</a> | <a href="another_page.html">Another Page</a> | <a href="contact.php">Contact Us</a></p>
-      <p>Copyright &copy; CSS3_four | <a href="http://www.css3templates.co.uk">design from css3templates.co.uk</a></p>
+      <p>
+	  <?php
+		//get the rest of the pages
+		$sql3 = mysql_query("SELECT `pages`.`menu_id` , `menu`.`menu_name` , `pages`.`id` FROM `pages` INNER JOIN `menu` ON (`pages`.`menu_id` = `menu`.`id`)");
+		$count =mysql_num_rows($sql3);
+		$i=1;
+		while ($row3 = mysql_fetch_object($sql3))
+		{
+			?>
+
+			<a href="<?=DIR?>?p=<?=$row3->id?>"><?=$row3->menu_name?></a>
+			<?php
+			if($i<$count)
+			{
+				echo "|";
+			}
+			$i++;
+		}
+	?></p>
+      <p>Copyright &copy; INNOVATE CMS | <a href="http://innovatetechnosolutions.com/">designed by Innovate Techno Solutions Team</a></p>
     </footer>
   </div>
   <!-- javascript at the bottom for fast page loading -->
