@@ -12,7 +12,10 @@ include"header.php";
                         <h1 class="page-header">
                             User comments
                         </h1>
-                        <ol class="breadcrumb">
+                         <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="dashboard.php">Dashboard</a>
+                            </li>
                             
                             <li class="active">
                                 <i class="fa fa-edit"></i> Click on commenttab to see comments
