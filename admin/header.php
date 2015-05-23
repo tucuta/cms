@@ -97,7 +97,7 @@
                                 <a href="new_menu.php">Add Menu</a>
                             </li>
 							<li>
-                                <a href="#">Add Sub Menu</a>
+                                <a href="addsubmenu.php">Add Sub Menu</a>
                             </li>
                         </ul>
                     </li>
@@ -128,7 +128,7 @@
                         </ul>
                     </li>
 					   <li>
-                        <a href="#"><i class="fa fa-fw fa-comments"></i>Comments</a>
+                        <a href="comment.php"><i class="fa fa-fw fa-comments"></i>Comments</a>
                     </li>
 						 <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#settings"><i class="fa fa-fw fa-gear"></i> Settings <i class="fa fa-fw fa-caret-down"></i></a>

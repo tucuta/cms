@@ -62,15 +62,7 @@ $count1 = mysql_num_rows($menu1);
 if($count1==1)
 {
 	//header("location:new_menu.php");
-	//echo "Menu Already Existed";
-	?>
-	<br/>
-	<div class="alert alert-danger">
- <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-    <strong>Menu Already Existed</strong>
-  </div>
-	<?php
-
+	echo "Menu Already Existed";
 }
 elseif($count!=1)
  {
@@ -114,8 +106,8 @@ while($row = mysql_fetch_array($view1))
 <tr>
                                         
                                         <td><?=$val['menu_name'];?></td>
-                                        <td><a href="edit_menu.php?ed=<?=$key?>"><img src="images/edit.png" class="img"></a></td>
-                                        <td><a href="new_menu.php?del=<?=$key?>"  onclick="myFunction()"><img src="images/delete.png" class="img"></a></td>
+                                        <td><a href="edit_menu.php?ed=<?=$key?>"><img src="images/edit.png" height="16px" width="16px"></a></td>
+                                        <td><a href="new_menu.php?del=<?=$key?>"  onclick="myFunction()"><img src="images/delete.png" height="16px" width="16px"></a></td>
                                     </tr>
                                    <br> 
                                 </tbody>
@@ -152,59 +144,101 @@ function insert_submenu($sub_menu,$menu_list)
 
 function view_submenu()
 {
-	?>
-<table>
-<tr>
- <td>View All Menus</td>
- <td>Edit</td>
- <td>Delete</td>
-</tr>
-<?php
-$view1 = mysql_query("select * from menu where active=1")or die(mysql_error());
-$count = mysql_num_rows($view1);
-while($row = mysql_fetch_array($view1))
-	{
-		$row_array[$row['id']]['menu_name']=$row['menu_name'];
-	}
-	if($count>0)
+  $view1 = mysql_query("select * from menu where active=1")or die(mysql_error());
+
+while($row1=mysql_fetch_array($view1))
 {
-	foreach($row_array as $key => $val)
-	{
-		?>
-
-<tr>
-	<td><a href="sub_menu.php?menu=<?=$key?>"><?=$val['menu_name'];?></a></td>
-</tr>
-<?php
- 
+  $key=$row1['id'] ;
+  //echo $key;
+  echo "<li>".  $row1['menu_name'] . "<br>";
+  $view = mysql_query("select * from sub_menu where id='$key'")or die(mysql_error());
+  while($row=mysql_fetch_array($view))
+  {
+	$key1=$row['sid'] ;
+	echo "<ul>" .$row['submenu_name']. "&nbsp;<a href='edit_submenu.php?ed=$key1'><img src='images/edit.png' height='16px' width='16px'></a>&nbsp;&nbsp;&nbsp;<a href='addsubmenu.php?del=$key1'><img src='images/delete.png' height='16px' width='16px'></a></ul>";
+	echo "";
+  }
+  echo "</li>";
+ }	
 }
-$abc=$_GET['menu'];
- echo $abc;
- $v = mysql_query("select * from sub_menu where menu_id='$abc'")or die(mysql_error());
-$co = mysql_num_rows($v);
-while($row = mysql_fetch_array($v))
-	{
-		$row1_array[$row['id']]['submenu_name']=$row['submenu_name'];
-	}
-	if($co>0)
-{
-	foreach($row1_array as $key => $val)
-	{
-?>
-
-<tr>
-	<td><?=$val['submenu_name'];?></td>
-	
-</tr>
-<?php
-	}
-}  
-}
-echo "</table>";
-
-
-}
-	
+function delete_submenu()
+ {
+   $delete=$_GET['del'];
+ $sql = mysql_query("delete from sub_menu where sid=$delete")or die(mysql_error());
+ }
 }
 /** End code **/
+
+/** dveloped by pavan **/
+class Comment
+{   
+	function insert_comment($email,$comment)
+	{
+		$dt=date("y-m-d h:i:sa");
+		$insert=mysql_query("insert into comments values (NULL,'$email','$comment','$dt','0')") or die(mysql_error());
+		
+		/*if($insert)
+		{
+			//echo "commented succesfully";
+			
+		}
+		
+		else{echo "not inserted";}*/
+	}
+
+function display()
+{
+	$dis=mysql_query("select *from comments")or die(mysql_error());
+	$count=mysql_num_rows($dis);
+	
+	if(!$count)
+{
+	die("could not get data".mysql_error());
+}
+else{
+	while($row=mysql_fetch_array($dis))
+	{
+		$row_array[$row['id']]['email']=$row['email'];
+		$row_array[$row['id']]['comment']=$row['comment'];
+		$row_array[$row['id']]['dt']=$row['dt'];
+	
+	}
+	echo "<div class='container' id='comm'><pre style='width:50%'>";
+	if($count>0)
+	{foreach($row_array as $key =>$val){
+	?>	
+<span class="label-success"><?=$val['email'];?>
+<pre><?=$val['comment'];?></pre>
+<?=$val['dt'];?></span><a href="comment.php?del=<?=$key?>" name="delete">delete</a>
+<?php
+}}}
+echo "</pre></div>";	
+}
+
+
+function edit()
+{
+	$edit=$_GET['edit'];
+	
+ 
+	$edit=mysql_query("select comment from comments where email=$email")or die(mysql_error());
+	
+	
+}
+
+function delete()
+{
+	$delete=$_GET['del'];
+	
+$delet=mysql_query("delete from comments where id='$delete'")or die(mysql_error());	
+	if($delet){
+		//echo "comment deleted";
+	}
+	
+	else "comment not deleted";
+}
+	
+	}
+
+	/** end code **/
 ?>
