@@ -72,7 +72,7 @@
                     <ul class="dropdown-menu">
                        
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-edit"></i>Edit Profile</a>
+                            <a href="editprofile.php"><i class="fa fa-fw fa-edit"></i>Edit Profile</a>
                         </li>
                         <li class="divider"></li>
                         <li>
@@ -123,7 +123,7 @@
                                 <a href="adduser.php">Add New</a>
                             </li>
 							<li>
-                                <a href="profile.php">Your Profile</a>
+                                <a href="editprofile.php">Your Profile</a>
                             </li>
                         </ul>
                     </li>
