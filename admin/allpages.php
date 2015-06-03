@@ -71,7 +71,7 @@ include "header.php";
                 
 			<?php
 			 include("dbconnect.php");
-			 $sql = mysql_query("SELECT `pages`.`page_title` , `menu`.`menu_name`, `pages`.`id` FROM `icms`.`pages` INNER JOIN `icms`.`menu` ON (`pages`.`menu_id` = `menu`.`id`) WHERE `menu`.`active`=1 ")or die(mysql_error());
+			 $sql = mysql_query("SELECT `pages`.`page_title` , `menu`.`menu_name`, `pages`.`id` FROM `pages` INNER JOIN `menu` ON (`pages`.`menu_id` = `menu`.`id`) WHERE `menu`.`active`=1 ")or die(mysql_error());
 			$count = mysql_num_rows($sql);
 			if($count>0)
 			{
